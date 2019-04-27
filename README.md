@@ -49,5 +49,17 @@ Usar el siguiente comando
 python server.py
 
 ## ¿Y esto de que sirve?
+En la siguiente imagen puedes ver la información que sale al correr el programa, podemos observar en un recuadro azul la información importante.
+[imagen](https://i.imgur.com/DoYM2sG.png "imagen")
+
+Teniendo nuestro celular y computadora dentro de la misma red, solo basta con escribir en el navegador la dirección IP que observamos en el recuadro (será distinta cuando ustedes lo corran, pero la idea es la misma).
+Deberíamos ver lo siguiente en el navegador:
+[imagen](https://i.imgur.com/TAfRdti.jpg "imagen")
+
+Y en el navegador de nuestra computadora, escribimos 
+localhost
+en la barra de direcciones y deberíamos ver lo mismo que en el movil.
+[imagen](https://i.imgur.com/5ffhkWO.png "imagen")
+
 
 
