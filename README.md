@@ -36,7 +36,7 @@ cd C:\Users\notZombieFood\Documents\LDI\Flask-App-with-Arduino-support
 Deberían ver algo parecido a lo siguiente:
 El comando "cd" es usado para movernos a un folder. 
 [cd](https://i.imgur.com/wnKtwnh.png "cd")
-
+[Imgur](https://i.imgur.com/wnKtwnh.png)
 ## Instalar librerías 
 Correr el siguiente comando:
 pip -r requirements.txt
