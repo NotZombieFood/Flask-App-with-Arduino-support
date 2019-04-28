@@ -22,7 +22,7 @@
         $.get(url + "/latest", function (data) {
             $("#sound_value").text(data);
             let data_int = parseInt(data);
-            if (data_int > 60) {
+            if (data_int > 70) {
                 alert("Sonido muy alto, debe tener cuidado");
             }
         });

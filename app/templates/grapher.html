@@ -10,6 +10,7 @@
 <script>
     console.log("Script graph iniciando");
     var list = {{list}};
+    var time_list  = {{time_list | safe}};
     console.log(list);
     var url = document.location.origin;
 
@@ -26,7 +27,7 @@
     var myLineChart = new Chart(ctx, {
         type: 'line',
         data: {
-        labels: {{time_list}},
+        labels: time_list,
         datasets: [{
             label: 'Data from sensor',
             backgroundColor: 'rgb(255, 99, 132)',
