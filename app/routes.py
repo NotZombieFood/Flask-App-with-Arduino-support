@@ -3,11 +3,12 @@
 from app import app
 from flask import render_template, redirect, url_for, request, send_from_directory, request
 import datetime, os, threading, serial, time
-
+datetime.datetime.now().strftime('%H:%M:%S')
 
 global lista_valores
-
+global lista_tiempos
 lista_valores = []
+lista_tiempos = []
 arduino = serial.Serial("COM3",9600,timeout = 2)
 # arduino.close()
 def checkVal():    
@@ -17,6 +18,7 @@ def checkVal():
 
 def append(value):
     lista_valores.append(value)
+    lista_tiempos.append(datetime.datetime.now().strftime('%H:%M:%S'))
 
 def f(f_stop):
     valor = checkVal()
@@ -45,7 +47,7 @@ def loadMonitor():
 
 @app.route('/graph')
 def loadGraph():
-    return render_template('grapher.html', list = lista_valores)
+    return render_template('grapher.html', list = lista_valores, time_list = lista_tiempos)
 
 @app.route('/latest')
 def getLatestValue():
