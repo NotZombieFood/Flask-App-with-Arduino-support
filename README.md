@@ -61,5 +61,18 @@ localhost
 en la barra de direcciones y deberíamos ver lo mismo que en el movil.
 [imagen](https://i.imgur.com/5ffhkWO.png "imagen")
 
+## Conectar PC con Arduino
+- Abrir menu de bluetooth y buscar el modulo, saldrá como HC-04.
+- Emparejar, la contraseña será 1234.
+- En configuración de Bluetooth avanzada, buscar la parte donde diga Puertos COM y anotar cual es el puerto entrante.
+- Anotar en la linea que diga lo siguiente 'arduino = serial.Serial("COM3",9600,timeout = 2)', y cambiar COM3 por el COM que encontramos.
 
+## Cargar el programa del arduino
+Programa que se llama example.ino
 
+# Rutas importantes
+## /graph
+Muestra una gráfica de los valores que ha recibido el sensor.
+
+## /monitor 
+Monitorea los valores actuales del sensor, recibe alertas.

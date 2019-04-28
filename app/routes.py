@@ -1,5 +1,5 @@
 # coding=utf-8
-## cd Documents/LDI/Flask-App-with-Arduino-support
+# cd Documents/LDI/Flask-App-with-Arduino-support
 from app import app
 from flask import render_template, redirect, url_for, request, send_from_directory, request
 import datetime, os, threading, serial, time
@@ -8,12 +8,11 @@ import datetime, os, threading, serial, time
 global lista_valores
 
 lista_valores = []
-
-def checkVal(port="COM3", baud_rate = 9600):
-    arduino = serial.Serial(port,baud_rate,timeout = 2)
+arduino = serial.Serial("COM3",9600,timeout = 2)
+# arduino.close()
+def checkVal():    
     rawString = arduino.readline()
     value = rawString.decode("utf-8").replace("\r","").replace("\n","")
-    arduino.close()
     return value
 
 def append(value):
@@ -21,10 +20,12 @@ def append(value):
 
 def f(f_stop):
     valor = checkVal()
-    append(valor)
+    if valor != '':
+        if int(valor)>50:
+            append(int(valor))
     if not f_stop.is_set():
         # call f() again in 60 seconds
-        threading.Timer(1, f, [f_stop]).start()
+        threading.Timer(.5, f, [f_stop]).start()
 
 f_stop = threading.Event()
 # start calling f now and every 60 sec thereafter
@@ -37,6 +38,14 @@ def base():
 @app.route('/static/<path:path>')
 def send_static_files(path):
     return send_from_directory('static', path)
+
+@app.route('/monitor')
+def loadMonitor():
+    return render_template('monitor.html', value = lista_valores[-1])
+
+@app.route('/graph')
+def loadGraph():
+    return render_template('grapher.html', list = lista_valores)
 
 @app.route('/latest')
 def getLatestValue():
